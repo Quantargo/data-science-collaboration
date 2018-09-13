@@ -1,5 +1,7 @@
 ---
 title: "Let's play together: Collaborative Data Science"
+subtitle: |
+  | 1st Data Science in Finance Conference
 institute: "Quantargo"
 author: "Mario Annau"
 date: "September 14, 2018"
@@ -11,7 +13,7 @@ output:
     reveal_options:
       previewLinks: yes
       slideNumber: yes
-    self_contained: yes
+    self_contained: no
     theme: black
     toc: yes
     transition: slide
@@ -62,8 +64,9 @@ pdb <- readRDS("data/pdb.rds")
 
 if (file.exists('test.h5')) file.remove('test.h5')
 ```
+## {data-background-iframe="https://www.quantargo.com"}
 
-## Why is it so hard?
+## CDS - Why is it so hard?
 
 - Data Science is an interdisciplinary field.
 - Most scientists care more about methods than code.
@@ -72,7 +75,7 @@ if (file.exists('test.h5')) file.remove('test.h5')
 
 ## 
 
-![Image Title](img/The Righteous Mind.jpg){width=400px}
+<img src="img/The Righteous Mind.jpg" style="height: 90vh;">
 
 ## Why is it so important?
 
@@ -140,8 +143,6 @@ plot_ly(x = x, y = x, type = 'scatter', mode = 'lines',
 
 ## Improving Network Effects
 
-Since Companies have started to build up data science teams:
-
 - How can code be managed to have positive network effects?
 - How can teams efficiently communicate and collaborate together?
 
@@ -175,7 +176,7 @@ plot_ly(pkgs, x = ~Date, y = ~published, type = 'scatter', mode = 'lines',
 ```
 
 
-## Package Network graph
+## 
 
 ```{r, eval=TRUE, echo=FALSE, warning=FALSE, error=FALSE}
 # TODO: Remove packages already shipped with R
@@ -262,7 +263,7 @@ plot_ly(x = pdb$NumAuthors, type = "histogram") %>%
 - Example: R-Excel Package
 - Example: HDF5 package development
 
-## R-Excel Package Universe
+## 
 
 ```{r, eval=TRUE, echo=FALSE, warning=FALSE, error=FALSE}
 networkfun <- function(pkg) {
@@ -283,16 +284,13 @@ excelpkg <- c('readxl', 'xlsx', 'openxlsx', 'XLConnect', 'gdata')
 networkfun(excelpkg)
 ```
 
-## HDF5 package development
-
-From a package developer's point of view:
+## HDF5 packages
 
 - Store large amounts of data, e.g. tick data
 - Chose HDF5 for Programming language independence, partial I/O, high performance
-- Unsatisfied with rhdf5, hdf5, h5r, ...
-- Write my own package!!!
+- Unsatisfied with rhdf5, hdf5, h5r, ... &rarr; h5
 
-![Image Title](img/data_exchange3.png){width=500px}
+![Image Title](img/data_exchange3.png){height=100%}
 
 <!-- ![HDF5 data exchange](img/data_exchange2.png) -->
 
@@ -372,6 +370,7 @@ Tools used: E-mail, Git, Screwdriver
 
 https://www.youtube.com/watch?v=LE0JtUeyVJA
 
+## {data-background-iframe="https://www.quantargo.com"}
 
 ## Thank you!
 

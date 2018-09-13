@@ -82,3 +82,26 @@ html, body, .reveal div, .reveal span, .reveal applet, .reveal object, .reveal i
   width:50%;
 }
 
+.reveal .slide-background {
+    display: block;
+    background-color: #0f1d45;
+}
+
+.reveal h2, .reveal h1, .reveal h3, .reveal p {
+    font-family: "Montserrat", Helvetica, sans-serif;
+}
+
+.reveal html, .reveal body, .reveal div, .reveal span, .reveal applet, .reveal object, .reveal iframe, .reveal pre, .reveal a, .reveal abbr, .reveal acronym, .reveal figcaption, .reveal footer, .reveal header {
+    font-family: 'Roboto', sans-serif;
+    /* font-size: 50%; */
+}
+
+.vis-network {
+  overflow: visible !important;
+}
+
+.reveal .vis-network canvas {
+  width: 100vw !important;
+    height: 100vh !important;
+    transform: translateY(-126px);
+}
