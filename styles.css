@@ -1,0 +1,84 @@
+.reveal section img { 
+  background:none; 
+  border:none; 
+  box-shadow:none; 
+}
+
+.reveal h2, .reveal h1, .reveal h3, .reveal p{
+    /*margin: 0 0 20px 0;*/
+    /*color: #fff;*/
+    font-family: "Fira Sans", Helvetica, sans-serif;
+    font-weight: 300;
+    line-height: 1.2;
+    letter-spacing: normal;
+    text-transform: none;
+    text-shadow: none;
+    word-wrap: break-word;
+}
+
+.reveal h3 {
+    text-align:center;
+    margin-top:40px;
+    
+}
+
+*{font-family: 'Roboto', sans-serif;}
+.bold{font-weight:bold;}
+.italic{font-style: italic;}
+.oblique{font-style: oblique;}
+
+html, body, .reveal div, .reveal a {
+    font-weight: 200;
+}
+
+.reveal .title,  
+.reveal .subtitle, 
+.reveal .author { text-align: left; }
+
+
+.reveal .title {
+  font-size: 150%;
+}
+
+.reveal .subtitle {
+    color: grey;
+    font-size: 100%;
+}
+
+.reveal .author {
+    color: grey;
+    font-size: 0.7em;
+}
+
+.reveal .date {
+    color: grey;
+    font-size: 0.7em;
+}
+
+
+html, body, .reveal div, .reveal span, .reveal applet, .reveal object, .reveal iframe, .reveal pre, .reveal a, .reveal abbr, .reveal acronym,  .reveal figcaption, .reveal footer, .reveal header {
+    margin: 0;
+    padding: 10;
+    border: 0;
+    vertical-align: baseline;
+    font-family: 'Fira Sans', sans-serif;
+    /*font-size: 50%;*/
+}
+
+#left {
+  left:-8.33%;
+  text-align: left;
+  float: left;
+  width:50%;
+  z-index:-10;
+}
+
+#right {
+  left:31.25%;
+  top: 75px;
+  float: right;
+  text-align: right;
+  z-index:-10;
+  width:50%;
+}
+
