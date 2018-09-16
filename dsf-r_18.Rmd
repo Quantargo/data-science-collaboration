@@ -287,7 +287,6 @@ networkfun(excelpkg)
 ## HDF5 packages
 
 - Store large amounts of data, e.g. tick data
-- Chose HDF5 for Programming language independence, partial I/O, high performance
 - Unsatisfied with rhdf5, hdf5, h5r, ... &rarr; h5
 
 ![Image Title](img/data_exchange3.png){height=100%}
@@ -369,6 +368,9 @@ Tools used: E-mail, Git, Screwdriver
 ![Merge Git](img/linus_screenshot.png)
 
 https://www.youtube.com/watch?v=LE0JtUeyVJA
+
+
+## {data-background-iframe="https://github.com/r-lib"}
 
 ## {data-background-iframe="https://www.quantargo.com"}
 
