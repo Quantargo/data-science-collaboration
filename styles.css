@@ -100,8 +100,13 @@ html, body, .reveal div, .reveal span, .reveal applet, .reveal object, .reveal i
   overflow: visible !important;
 }
 
-.reveal .vis-network canvas {
-  width: 100vw !important;
-    height: 100vh !important;
-    transform: translateY(-126px);
+.reveal canvas {
+    width: 130vw !important;
+    height: 130vh !important;
+    margin: -20px !important;
+    transform: translate(-17vw,-12vh);
+}
+
+.reveal h1 {
+    font-size: 1.8em;
 }

@@ -1,10 +1,10 @@
 ---
 title: "Let's play together: Collaborative Data Science"
 subtitle: |
-  | 1st Data Science in Finance Conference
+  | Data Science Conference 4.0
 institute: "Quantargo"
 author: "Mario Annau"
-date: "September 14, 2018"
+date: "September 19, 2018"
 output:
   revealjs::revealjs_presentation:
     includes:
@@ -13,7 +13,7 @@ output:
     reveal_options:
       previewLinks: yes
       slideNumber: yes
-    self_contained: no
+    self_contained: yes
     theme: black
     toc: yes
     transition: slide
@@ -64,9 +64,8 @@ pdb <- readRDS("data/pdb.rds")
 
 if (file.exists('test.h5')) file.remove('test.h5')
 ```
-## {data-background-iframe="https://www.quantargo.com"}
 
-## CDS - Why is it so hard?
+## Why is it so hard?
 
 - Data Science is an interdisciplinary field.
 - Most scientists care more about methods than code.
@@ -83,12 +82,18 @@ if (file.exists('test.h5')) file.remove('test.h5')
 - Collaboration can generate new ideas.
 - Network effects if more people work efficiently together.
 
-## Positive Network Effects
+##  Network Effects
 
-<!-- 
+<!-- Positive:
 - Code is well managed and reusable.
 - Team works efficiently together.
 - Ideas are generated on a continous basis.
+-->
+
+<!-- Negative:
+- Spaghetti code
+- Teams work against each other
+- Ideas are not well discussed, spurious
 -->
 
 ```{r, echo=FALSE}
@@ -114,30 +119,15 @@ yaxt <- list(
 )
 x <- 1:10
 y.pos <- 1:10 * (1.02)^(1:10)
-
-plot_ly(x = x, y = x, type = 'scatter', mode = 'lines', 
-          name = 'Linear Productivity') %>%
-  add_lines(x = x, y = y.pos, name = 'Positive Network Effect', 
-            fill = 'tonexty', line = list(color = "green")) %>% 
-  layout(xaxis = xaxt, yaxis = yaxt, paper_bgcolor = 'rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)', 
-         legend = list(x = 0.1, y = 0.9, font = flegend))
-```
-
-## Negative Network Effects
-
-<!-- 
-- Spaghetti code
-- Teams work against each other
-- Ideas are not well discussed, spurious
--->
-
-```{r, echo=FALSE}
 y.neg <- 1:10 * (1.02)^-(1:10)
+
 plot_ly(x = x, y = x, type = 'scatter', mode = 'lines', 
           name = 'Linear Productivity') %>%
-  add_lines(x = x, y = y.neg, name = 'Positive Network Effect', 
+  add_lines(x = x, y = y.neg, name = 'Negative Network Effect', 
             fill = 'tonexty', line = list(color = "red")) %>% 
-  layout(xaxis = xaxt, yaxis = yaxt, paper_bgcolor = 'rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)',
+  add_lines(x = c(x, 10), y = c(y.pos, 10), name = 'Positive Network Effect', 
+            fill = 'toself', line = list(color = "green")) %>% 
+  layout(xaxis = xaxt, yaxis = yaxt, paper_bgcolor = 'rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)', 
          legend = list(x = 0.1, y = 0.9, font = flegend))
 ```
 
@@ -224,7 +214,8 @@ nodes <- data.frame(id = nodes.df.join$L1.idx,
 edges <- data.frame(from = nodes.df.join$L1.idx, to = nodes.df.join$value.idx)
 visNetwork::visNetwork(unique(nodes), edges) %>% 
   visInteraction(dragNodes = TRUE, dragView = TRUE, zoomView = TRUE) %>% 
-  visNodes(font = list(color = "white"))
+  visNodes(font = list(color = "white")) %>%
+  visLayout(improvedLayout = FALSE)
 ```
 
 
@@ -234,13 +225,14 @@ visNetwork::visNetwork(unique(nodes), edges) %>%
 authors <- pdb$Author
 authors.split <- authors %>% removeArtifacts %>% removeBraces %>% splitAndComma %>% wstrim
 pdb$NumAuthors <- sapply(authors.split, length)
+pdb$NumAuthors <- factor(ifelse(pdb$NumAuthors <= 10, pdb$NumAuthors, "More"), levels = c(1:10, "More"))
 
 xaxt <- list(
   title = "",
   titlefont = f1,
   tickfont = f1,
-  color="white",
-  type="log"
+  color="white"
+  #type="log"
 )
 yaxt <- list(
   title = "Number of Packages Published",
@@ -277,7 +269,8 @@ networkfun <- function(pkg) {
   edges <- data.frame(from = nodes.df.excel$L1.idx, to = nodes.df.excel$value.idx)
   visNetwork::visNetwork(unique(nodes), edges) %>% 
     visInteraction(dragNodes = TRUE, dragView = TRUE, zoomView = TRUE) %>% 
-    visNodes(font = list(color = "white"))
+    visNodes(font = list(color = "white")) %>%
+    visLayout(improvedLayout = FALSE)
 }
 
 excelpkg <- c('readxl', 'xlsx', 'openxlsx', 'XLConnect', 'gdata')
@@ -342,28 +335,32 @@ On Oct 10, 2016 Holger wrote:
 
 ## The Joys Collaboration
 
-After overcoming psychological barriers:
+(after overcoming psychological barriers)
 
 - Code reviews
 - Higher Quality Code
 - End product of higher qualtity than separate packages.
 
-## Q: How can code be managed to have positive network effects?
+## 
+
+> Q: How can code be managed to have positive network effects?
 
 - Put it into re-usable package.
 - Continous code-reviews and tests.
 - Transparent platform to inspect.
 
-## Q: How can teams efficiently communicate and collaborate together?
+## 
+
+> Q: How can teams efficiently communicate and collaborate together?
 
 - Have the right tools and mindset in place.
 - Incentivise collaborative efforts.
 - Accept unexpected hypotheses and failures
 - Open mindedness.
 
-## The Master of the All
+## Collaboration Torvalds Style
 
-Tools used: E-mail, Git, Screwdriver
+Tools used: E-mail, Git
 
 ![Merge Git](img/linus_screenshot.png)
 
@@ -386,4 +383,3 @@ Presentation source available at
 
 https://github.com/Quantargo/data-science-collaboration
 
-See you at the coffee break!
